@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Configuración Apagado";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center">
+        Configuración del apagado
+    </h1>
+</div>
+
+<div class="container p-2">
+    <div class="shadow p-3 bg-white rounded mx-auto mb-4">
+        <form method="post" asp-controller="Shut"
+              asp-action="Result">
+            <div class="form-group">
+                <label for="mensaje">Mensaje</label>
+                <textarea name="mensaje" id="mensaje"
+                          class="form-control" rows="2"
+                          placeholder="Se mostrará antes del apagado."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="tiempo">Tiempo</label>
+                <input type="number" name="tiempo" id="tiempo"
+                       class="form-control" placeholder="Expresado en segundos." />
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Confirmar
+            </button>
+
+            <a asp-action="Options"
+               asp-controller="Home" class="btn btn-danger">
+                Cancelar
+            </a>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Admin - Listado Apps";
+}
+
+@model List<App>
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center">
+        Panel Admin
+    </h1>
+</div>
+
+<div class="container">
+    <a asp-controller="Admin"
+       asp-action="Create"
+       class="btn btn-primary btn-block py-2">
+        Añadir App
+    </a>
+
+    <div class="table-responsive mt-4">
+        <table class="table table-hover text-center">
+            <thead>
+                <tr>
+                    <th>App</th>
+                    <th>Windows</th>
+                    <th>Linux</th>
+                    <th>Mac</th>
+                    <th></th>
+                </tr>
+            </thead>
+
+            <tbody class="text-center">
+                @foreach (App app in Model)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/images/icons/@app.Icono" alt=""
+                                 style="max-height: 50px; max-width: 50px" />
+                        </td>
+                        <td class="text-break">@app.AccesoWindows</td>
+                        <td class="text-break">@app.AccesoLinux</td>
+                        <td class="text-break">@app.AccesoMac</td>
+                        <td class="d-flex justify-content-center align-items-center">
+                            <a asp-controller="Admin"
+                               asp-action="Update"
+                               asp-route-id="@app.Id"
+                               class="btn btn-outline-primary mr-1">
+                                Editar
+                            </a>
+                            <form asp-controller="Admin" asp-action="Delete" method="post">
+                                <input type="hidden" name="id" value="@app.Id" />
+                                <button type="submit"
+                                        class="btn btn-outline-danger">
+                                    Eliminar
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

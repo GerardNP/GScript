@@ -1,0 +1,25 @@
+﻿@{
+    ViewData["Title"] = "Opciones Ejecutable";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center">
+        Selecciona una opción
+    </h1>
+</div>
+
+<div class="container">
+    <div class="list-group text-center">
+            <a asp-action="Index" asp-controller="Apps"
+               class="list-group-item list-group-item-action
+               list-group-item-success">
+                Abrir Apps
+            </a>
+
+            <a asp-action="Index" asp-controller="Shut"
+               class="list-group-item list-group-item-action
+               list-group-item-danger">
+                Apagar Equipo
+            </a>
+    </div>
+</div>

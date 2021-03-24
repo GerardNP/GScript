@@ -1,0 +1,48 @@
+﻿@{
+    ViewData["Title"] = "Resultado Apps";
+}
+
+<div class="container mt-4 px-3">
+    <p class="text-center lead">
+        Selecciona el SO en el que deseas usar el ejecutable.
+    </p>
+
+    <div class="row">
+        <div class="col-6 d-flex bg-warning py-3 rounded-top" id="LinuxOption">
+            <img src="~/images/content/linux-icon.svg" alt="" class="img-fluid mx-auto" style="max-height: 150px;" />
+        </div>
+        <div class="col-6 d-flex bg-success py-3 rounded-top" id="MacOption">
+            <img src="~/images/content/macos-icon.svg" alt="" class="img-fluid mx-auto" style="max-height: 150px;" />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 d-flex bg-info py-3 rounded-bottom " id="windowsOption">
+            <img src="~/images/content/windows-icon.svg" alt="" class="img-fluid mx-auto" style="max-height: 150px;" />
+        </div>
+    </div>
+</div>
+
+<div id="capaResultOptions"></div>
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(() => {
+
+            $("#windowsOption").click(() => {
+                console.log("Windows");
+
+                $("#capaResultOptions").load("/Apps/ResultApps");
+                setTimeout(() => {
+                    $("#modalResultOptions").click();
+                    $("#btn-copy").click(() => copyToClipboard("txtexe"));
+                }, 1000);
+            });
+
+            const copyToClipboard = (idElementTxt) => {
+                let txt = $("#" + idElementTxt).val();
+                navigator.clipboard.writeText(txt);
+            }
+        });
+    </script>
+}

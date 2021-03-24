@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Sign Up";
+}
+
+<div class="container">
+    <div class="row mx-0 mb-4 shadow rounded" style="margin-top: 60px;">
+        <div class="col-md-6 p-3">
+            <h1 class="display-4 text-center" style="margin-bottom: 40px;">
+                Sign Up
+            </h1>
+            <p class="text-muted p-2 text-center">
+                Regístrate y guarda el contenido de tus ejecutables.<br />
+                Accede a ellos en cualquier momento y desde cualquier lugar.<br />
+                Elimínalos, Edítalos, Renombralos, Descargalos, Haz lo que necesites.
+            </p>
+        </div>
+
+        <div class="col-md-6 p-3">
+            <form method="post">
+                <div class="form-group">
+                    <label class="pl-2">Usuario</label>
+                    <input type="text" name="nombre" class="form-control rounded-pill" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="pl-2">Correo</label>
+                    <input type="email" name="correo" class="form-control rounded-pill" required />
+                </div>
+
+                <div class="form-group">
+                    <label class="pl-2">Contraseña</label>
+                    <input type="password" name="password" class="form-control rounded-pill" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary rounded-pill">
+                    Registrar
+                </button>
+            </form>
+        </div>
+    </div>
+</div>
+

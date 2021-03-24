@@ -1,0 +1,75 @@
+﻿@{
+    ViewData["Title"] = "Selección Apps";
+}
+
+@model List<App>
+
+<style>
+    .checked {
+        border: 1px solid #007bff;
+    }
+</style>
+
+<form method="post" asp-action="Result" asp-controller="Apps">
+    <div class="jumbotron">
+        <h1 class="display-4 text-center">
+            Selecciona Apps
+        </h1>
+    </div>
+
+    <div class="form-group">
+        <input type="text" name="usuario" required placeholder="Introduce tu nombre de usuario de Windows"
+               autofocus class="form-control"/>
+    </div>
+
+    <div class="row row-cols-2 row-cols-md-4 mx-0">
+        @foreach (App app in Model)
+        {
+            <div class="col mb-4">
+                <div class="card">
+                    <input type="checkbox" name="ids" value="@app.Id" id="@app.Nombre" />
+                    <img src="~/images/icons/@app.Icono" class="card-img-top" alt="..." data-idapp="@app.Id">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            @app.Nombre
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center">
+        <button type="submit" class="btn btn-primary mr-1">Confirmar</button>
+
+        <a asp-action="Options"
+           asp-controller="Home"
+           class="btn btn-danger">
+            Cancelar
+        </a>
+    </div>
+</form>
+
+
+@section scripts {
+    <script type="text/javascript">
+        $(document).ready(() => {
+            $("img").click(selectApp);
+        });
+
+        function selectApp(e) {
+            let id = e.target.dataset.idapp;
+            let chk = $("input[value=" + id + "]");
+            console.log(chk);
+
+            if (e.target.className == "card-img-top") {
+                e.target.className = "checked";
+                chk.checked = true;
+            }
+            else {
+                e.target.className = "card-img-top";
+                chk.checked = false;
+            }
+        }
+    </script>
+}

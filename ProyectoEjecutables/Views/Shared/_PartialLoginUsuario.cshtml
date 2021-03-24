@@ -1,0 +1,49 @@
+﻿@if (!Context.User.Identity.IsAuthenticated)
+{
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav ml-auto">
+            <a asp-controller="Identity"asp-action="Signup"
+               class="nav-link">Sign Up</a>
+
+            <a asp-controller="Identity"asp-action="Login"
+               class="nav-link">Log In</a>
+        </div>
+    </div>
+}
+else
+{
+    <div class="dropdown ml-auto">
+        <button class="btn d-inline-flex justify-content-center align-items-center" 
+                type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="text-white mr-2">@User.Identity.Name</span>
+            <img src="~/images/content/profiledefault-icon.png" alt="" style="max-height: 40px; max-width: 40px;" />
+        </button>
+        <div class="dropdown-menu dropdown-menu-right text-center" aria-labelledby="dropdownMenuButton">
+            @if (Context.User.IsInRole("admin"))
+            {
+                <a asp-controller="Admin"
+                   asp-action="Index"
+                   class="dropdown-item">
+                    Admin
+                </a>
+            }
+            <a asp-controller="Usuarios"
+               asp-action="Perfil"
+               class="dropdown-item">
+                Perfil
+            </a>
+            <form method="post" asp-controller="Identity"
+                  asp-action="Logout">
+                <button type="submit" class="dropdown-item">Cerrar Sesión</button>
+            </form>
+            @*<a asp-controller="Identity"
+                   asp-action="Logout"
+                   class="dropdown-item">
+                    Cerrar Sesión
+                </a>*@
+        </div>
+    </div>
+}

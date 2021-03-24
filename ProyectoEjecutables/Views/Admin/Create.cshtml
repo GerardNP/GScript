@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="jumbotron">
+    <h1 class="display-4 text-center">
+        Añadir App
+    </h1>
+</div>
+
+<div class="shadow p-3 bg-white rounded mx-auto" style="width: 23rem;">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="nombre">Nombre</label>
+            <input type="text" name="nombre" id="nombre"
+                   class="form-control" required autofocus />
+        </div>
+
+        <div class="form-group">
+            <label for="accesowindows">Acceso Windows</label>
+            <input type="text" name="accesowindows" id="accesowindows"
+                   class="form-control" />
+            <span class="text-muted">
+                Si la ruta incluye el usuario, sustituirlo por INSERTAR_USUARIO</span>
+        </div>
+
+        <div class="form-group">
+            <label for="accesolinux">Acceso Linux</label>
+            <input type="text" name="accesolinux" id="accesolinux"
+                   class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="accesomac">Acceso Mac</label>
+            <input type="text" name="accesomac" id="accesomac"
+                   class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label for="icono">Icono</label>
+            <input type="file" name="imagen" id="imagen"
+                   class="form-control-file" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Añadir
+        </button>
+
+        <a asp-action="Index"
+           asp-controller="Admin"
+           class="btn btn-danger">
+            Cancelar
+        </a>
+    </form>
+</div>
